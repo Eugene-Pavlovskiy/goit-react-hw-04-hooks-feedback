@@ -1,27 +1,42 @@
-import PropTypes from 'prop-types';
+import React from "react";
+import s from "./FeedbackOptions.module.css";
 
-import s from './FeedbackOptions.module.css';
-
-function FeedbackOptions({ feedbackBtnsOptions, onLeaveFeedback }) {
+function Feedback({ onClick }) {
   return (
-    <div className={s.feedbackOptions}>
-      {feedbackBtnsOptions.map(opt => (
-        <button
-          className={s.feedbackBtn}
-          key={opt}
-          type="button"
-          value={opt}
-          onClick={onLeaveFeedback}
-        >
-          {opt} +1
-        </button>
-      ))}
-    </div>
+    <>
+      <div className="button__area">
+        <ul className={s.button__list}>
+          <li>
+            <button
+              className={s.button__btn}
+              id="good_value"
+              onClick={onClick}
+            >
+              Good
+            </button>
+          </li>
+          <li>
+            <button
+              className={s.button__btn}
+              id="neutral_value"
+              onClick={onClick}
+            >
+              Neutral
+            </button>
+          </li>
+          <li>
+            <button
+              className={s.button__btn}
+              id="bad_value"
+              onClick={onClick}
+            >
+              Bad
+            </button>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 }
 
-FeedbackOptions.propTypes = {
-  feedbackBtnsOptions: PropTypes.arrayOf(PropTypes.string),
-};
-
-export default FeedbackOptions;
+export default Feedback;
